@@ -2,9 +2,6 @@
 
 A modern web application for tracking workout activities and health challenges. Built with Angular and featuring a beautiful, responsive UI with dark mode support.
 
-![Health Challenge Tracker](https://www.google.com/imgres?q=health%20tracker%20webapp%20png&imgurl=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220914%2Fourmid%2Fpngtree-set-of-vector-templates-for-cartoon-smartphone-interface-health-tracker-vector-png-image_39221972.jpg&imgrefurl=https%3A%2F%2Fpngtree.com%2Fso%2Fhealth-tracker&docid=-Zrs_RuCa3ZkkM&tbnid=nmUO_15r4AUv9M&vet=12ahUKEwjt_ZaPn56LAxXa2TgGHYv8CnwQM3oECH8QAA..i&w=687&h=360&hcb=2&ved=2ahUKEwjt_ZaPn56LAxXa2TgGHYv8CnwQM3oECH8QAA)
-
-
 ## 🌐 Live Demo
 
 Check out the live demo: [Health Challenge Tracker](https://health-challenge-tracker.vercel.app)
@@ -98,10 +95,13 @@ npm run test:coverage
 ## 📱 Screenshots
 
 ### Light Mode
-![Light Mode](https://i.imgur.com/example-light.png)
+![image](https://github.com/user-attachments/assets/c9fe5c09-a4d2-4834-bc40-7e0d49791cd3)
 
 ### Dark Mode
-![Dark Mode](https://i.imgur.com/example-dark.png)
+![image](https://github.com/user-attachments/assets/97b80306-5892-4259-865d-8b8067547b84)
+
+### List
+![image](https://github.com/user-attachments/assets/c2570841-bbb3-4319-858a-24ac625b9e2e)
 
 ## 🔗 Connect with Me
 
