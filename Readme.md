@@ -4,7 +4,7 @@ A modern web application for tracking workout activities and health challenges. 
 
 ## 🌐 Live Demo
 
-Check out the live demo: [Health Challenge Tracker](https://health-challenge-tracker.vercel.app)
+Check out the live demo: [Health Tracker](https://health-trackerz-app.vercel.app)
 
 ## 🌟 Features
 
