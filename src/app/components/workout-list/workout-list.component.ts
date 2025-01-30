@@ -10,7 +10,7 @@ import { User, WORKOUT_TYPES } from '../../models/workout.model';
   imports: [CommonModule, FormsModule],
   template: `
     <div class="space-y-4">
-      <div class="flex flex-col md:flex-row gap-4">
+      <div class="flex flex-col md:flex-row gap-4 mt-[1vh]">
         <div class="flex-1">
           <input
             type="text"
