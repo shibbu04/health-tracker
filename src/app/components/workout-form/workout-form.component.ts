@@ -64,13 +64,17 @@ import { WORKOUT_TYPES } from '../../models/workout.model';
   `
 })
 export class WorkoutFormComponent {
-  workoutForm: FormGroup;
+  workoutForm!: FormGroup;
   workoutTypes = WORKOUT_TYPES;
 
   constructor(
     private fb: FormBuilder,
     private workoutService: WorkoutService
   ) {
+    this.initForm();
+  }
+
+  private initForm(): void {
     this.workoutForm = this.fb.group({
       name: ['', Validators.required],
       type: ['', Validators.required],
@@ -87,7 +91,7 @@ export class WorkoutFormComponent {
     if (this.workoutForm.valid) {
       const { name, type, minutes } = this.workoutForm.value;
       this.workoutService.addWorkout(name, { type, minutes });
-      this.workoutForm.reset();
+      this.resetForm();
     } else {
       Object.keys(this.workoutForm.controls).forEach(key => {
         const control = this.workoutForm.get(key);
@@ -96,5 +100,13 @@ export class WorkoutFormComponent {
         }
       });
     }
+  }
+
+  private resetForm(): void {
+    this.workoutForm.reset({
+      name: '',
+      type: '',
+      minutes: ''
+    });
   }
 }
