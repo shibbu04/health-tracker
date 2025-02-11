@@ -10,12 +10,12 @@ import { User, WORKOUT_TYPES } from '../../models/workout.model';
   imports: [CommonModule, FormsModule],
   template: `
     <div class="space-y-4">
-      <div class="flex flex-col md:flex-row gap-4 mt-[1vh]">
+      <div class="flex flex-col md:flex-row gap-4">
         <div class="flex-1">
           <input
             type="text"
             [(ngModel)]="searchQuery"
-            (ngModelChange)="onSearch($event)"
+            (ngModelChange)="applyFilters()"
             placeholder="Search by name..."
             class="input"
           />
@@ -23,7 +23,7 @@ import { User, WORKOUT_TYPES } from '../../models/workout.model';
         <div class="md:w-64">
           <select
             [(ngModel)]="selectedType"
-            (ngModelChange)="onFilterType($event)"
+            (ngModelChange)="applyFilters()"
             class="select"
           >
             <option value="All">All Workout Types</option>
@@ -124,16 +124,27 @@ export class WorkoutListComponent implements OnInit {
     return user.workouts.reduce((total, w) => total + w.minutes, 0);
   }
 
-  onSearch(query: string): void {
-    this.searchQuery = query;
-    this.currentPage = 1;
-    this.applyFilters();
-  }
+  applyFilters(): void {
+    let filtered = [...this.users];
 
-  onFilterType(type: string): void {
-    this.selectedType = type;
-    this.currentPage = 1;
-    this.applyFilters();
+    // Apply name search filter
+    if (this.searchQuery.trim()) {
+      const searchLower = this.searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(user => 
+        user.name.toLowerCase().includes(searchLower)
+      );
+    }
+
+    // Apply workout type filter
+    if (this.selectedType !== 'All') {
+      filtered = filtered.filter(user =>
+        user.workouts.some(workout => workout.type === this.selectedType)
+      );
+    }
+
+    this.filteredUsers = filtered;
+    this.currentPage = 1; // Reset to first page when filters change
+    this.updateDisplayedUsers();
   }
 
   setPage(page: number): void {
@@ -144,21 +155,6 @@ export class WorkoutListComponent implements OnInit {
   onItemsPerPageChange(items: number): void {
     this.itemsPerPage = items;
     this.currentPage = 1;
-    this.updateDisplayedUsers();
-  }
-
-  private applyFilters(): void {
-    let filtered = this.users;
-    
-    if (this.searchQuery) {
-      filtered = this.workoutService.searchUsers(this.searchQuery);
-    }
-    
-    if (this.selectedType !== 'All') {
-      filtered = this.workoutService.filterByWorkoutType(this.selectedType);
-    }
-
-    this.filteredUsers = filtered;
     this.updateDisplayedUsers();
   }
 
